@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/OpenSans.ttf") format("ttf");
+  
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 40px;
+  background: #f3f7fa;
+}
+
+body,
+a,
+li,
+ol,
+ul,
+menu,
+section,
+aside,
+h1,
+pre,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+a,
+li,
+ol,
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  width: 755px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.app__logo {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+

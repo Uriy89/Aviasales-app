@@ -1,0 +1,53 @@
+.routes {
+    width: 502px;
+    height: auto;
+    margin-top: 20px;
+    
+  }
+  
+  .route {
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .routeTop {
+    width: 462px;
+    margin-left: 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .routeTop__price {
+    display: block;
+    font-size: 24px;
+    color: #2196F3;
+  }
+  
+  /* route_info */
+  
+  .routeInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .routeInfo__item {
+    width: 141px;
+  }
+  
+  .routeInfo__item p:first-child {
+    color: #A0B0B9;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .routeInfo__item p:last-child {
+    color: #4A4A4A;
+    line-height: 21px;
+    font-size: 14px;
+  }
