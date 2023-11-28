@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './App.module.css';
 import logo from '../assets/images/Logo.png';
 import Filter from '../components/Filter';
@@ -6,31 +6,20 @@ import Sort from '../components/Sort';
 import TicketsList from '../components/TicketsList';
 import Spinner from '../components/Spinner';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSearchId, fetchTickets, ticketsPortion } from '../redux/actions';
+import { fetchSearchId } from '../redux/reducers/ticketsSlice';
 
 const App = () => {
-  const loading = useSelector((state) => state.data.loading);
-  const tickets = useSelector((state) => state.data.tickets);
-  const loaded = useSelector((state) => state.data.loaded);
-  const [index, setIndex] = useState(0);
+  const stop = useSelector((state) => state.data.stop);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(fetchSearchId());
-      await dispatch(fetchTickets(tickets));
     };
     fetchData();
   }, [dispatch]);
 
-  useEffect(() => {
-    if (tickets !== null) {
-      dispatch(ticketsPortion(tickets, index));
-      setIndex((index) => index + 5);
-    }
-  }, [loaded]);
-
-  const spinner = loading ? <Spinner /> : null;
+  const spinner = !stop ? <Spinner /> : null;
 
   return (
     <div className={styles.wrapper}>

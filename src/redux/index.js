@@ -5,5 +5,11 @@ import thunk from 'redux-thunk';
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(thunk).concat(logger)
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({
+      thunk,
+      serializableCheck: false,
+      immutableCheck: false
+    }).concat(logger);
+  }
 });

@@ -1,27 +1,30 @@
 import React from 'react';
 import styles from './Sort.module.css';
 import classNames from 'classnames';
-import * as actionsTypes from '../../redux/actions/actionTypes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { sortTickets, changeSort } from '../../redux/reducers/ticketsSlice';
+import * as c from '../../constans';
 
 const Sort = () => {
-  const store = useSelector((store) => store.data);
+  const dispatch = useDispatch();
+  const sort = useSelector((store) => store.data.sort);
+  let id = 0;
 
   const buttons = [
     {
-      name: actionsTypes.SORT_TICKET_BY_CHEAP,
+      type: c.SORT_TICKET_BY_CHEAP,
       label: 'Самый дешевый',
-      isActive: store.isCheap
+      isActive: sort === c.SORT_TICKET_BY_CHEAP
     },
     {
-      name: actionsTypes.SORT_TICKET_BY_FAST,
+      type: c.SORT_TICKET_BY_FAST,
       label: 'Самый быстрый',
-      isActive: store.isFast
+      isActive: sort === c.SORT_TICKET_BY_FAST
     },
     {
-      name: actionsTypes.SORT_TICKET_BY_OPTIMAL,
+      type: c.SORT_TICKET_BY_OPTIMAL,
       label: 'Оптимальный',
-      isActive: store.isOptimal
+      isActive: sort === c.SORT_TICKET_BY_OPTIMAL
     }
   ];
 
@@ -32,7 +35,13 @@ const Sort = () => {
         [styles.buttonFilterActive]: button.isActive
       });
       return (
-        <button key={button.name} id={button.name} className={buttonClasses}>
+        <button
+          key={id++}
+          id={button.name}
+          className={buttonClasses}
+          onClick={() => {
+            dispatch(sortTickets(), dispatch(changeSort(button.type)));
+          }}>
           {button.label}
         </button>
       );

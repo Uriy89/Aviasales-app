@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dataReducer from './dataReducer';
+import ticketsSlice from './ticketsSlice';
 
 const rootReducer = combineReducers({
-  data: dataReducer
+  data: ticketsSlice
 });
 
 export default rootReducer;

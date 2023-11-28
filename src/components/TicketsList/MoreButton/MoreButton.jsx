@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './MoreButton.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { ticketsPortion } from '../../../redux/actions';
+import { addToTicketsPortion } from '../../../redux/reducers/ticketsSlice';
 
 const MoreButton = () => {
   const tickets = useSelector((state) => state.data.tickets);
-  const [index, setIndex] = useState(5);
   const dispatch = useDispatch();
 
   const onMoreTickets = () => {
-    dispatch(ticketsPortion(tickets, index));
-    setIndex((index) => index + 5);
+    const currentIndex = tickets.length;
+    dispatch(addToTicketsPortion(tickets, currentIndex, 5));
   };
 
   return (
