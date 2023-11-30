@@ -11,14 +11,13 @@ const TicketsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('store: ' + store.data);
     setTimeout(() => {
       if (!store.stop) {
         dispatch(fetchTickets());
       }
       dispatch(sortTickets());
-    }, 100);
-  }, [dispatch, store.loading]);
+    }, 300);
+  }, [dispatch, store.loading, store.filterButtons]);
 
   const createTickets = (tickets, count) => {
     let viewTickets = [];
@@ -41,7 +40,10 @@ const TicketsList = () => {
 
   return (
     <ul className={styles.ticketsList}>
-      {createTickets(store.tickets, store.ticketsCount)}
+      {store.tickets.length === 0 && store.stop
+        ? 'Билеты не найдены!'
+        : createTickets(store.sortTickets, store.ticketsCount)}
+      {store.err.length > 0 && store.tickets.length === 0 && 'Ошибка сервера'}
       {store.sortTickets.length === 0 ? null : <MoreButton />}
     </ul>
   );

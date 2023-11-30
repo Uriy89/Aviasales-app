@@ -1,0 +1,27 @@
+.check {
+    display: block;
+    padding-left: 1.6em;
+    cursor: url('../../../assets/images/Cursor.svg'), auto;
+    margin-left: 20px;
+  }
+  
+  .check__input {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .check__box {
+    position: absolute;
+    margin-left: -1.6em;
+    margin-top: 0.5em;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../../assets/images/Check.svg);
+  }
+  
+  .check__input:checked + .check__box {
+    background-image: url(../../../assets/images/Checkbox.svg);
+  }
+  

@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 export const store = configureStore({
@@ -10,6 +9,6 @@ export const store = configureStore({
       thunk,
       serializableCheck: false,
       immutableCheck: false
-    }).concat(logger);
+    });
   }
 });
